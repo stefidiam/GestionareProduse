@@ -1,0 +1,33 @@
+﻿@model CodeSimpleCRUD.Models.Warehouse
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Stergere</h1>
+
+<h3>Esti sigur ca vrei sa stergi elementul?</h3>
+<div>
+    <h4>Depozit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProdId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProdId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DepId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Inapoi la lista</a>
+    </form>
+</div>

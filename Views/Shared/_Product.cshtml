@@ -1,0 +1,54 @@
+﻿@model GestionareProduse.Models.Product
+
+		<td>
+			@Html.DisplayFor(modelItem => Model.ProdId)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.ProdName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.Price)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.Color)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.BrandId)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.CatId)
+		</td>
+
+		<td>
+			<div class="btn-group">
+				@*<a asp-action="Edit" asp-route-id="@Model.Code" class="btn btn-sm btn-info">Edit</a>*@
+				@*<a asp-action="Details" asp-route-id="@Model.Code" class="btn btn-sm btn-primary ml-1">Details</a>*@
+
+
+				<form asp-action="EditProduct" asp-route-id="@Model.ProdId"
+					  data-ajax="true"
+					  data-ajax-update="#DivDetailView"
+					  data-ajax-success="ShowDetailForm()">
+					<button type="submit" class="btn btn-sm btn-info">
+						Edit
+					</button>
+				</form>
+
+				<form asp-action="ViewProduct" asp-route-id="@Model.ProdId"
+					  data-ajax="true"
+					  data-ajax-update="#DivDetailView"
+					  data-ajax-success="ShowDetailForm()">
+					<button type="submit" class="btn btn-sm btn-primary ml-1">
+						Details
+					</button>
+				</form>
+
+				<form asp-action="DeleteProduct" asp-route-id="@Model.ProdId"
+					  data-ajax="true" data-ajax-success="deleteItem(this)">
+					<button type="submit" class="btn btn-sm btn-danger ml-1"
+							onclick="return confirm('Delete Confirmation for Product @Model.ProdId');">
+						Delete
+					</button>
+				</form>
+			</div>
+		</td>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<GestionareProduse.Models.Product>
+
+@{
+	ViewData["Title"] = "Index";
+
+	Pager pager = new Pager();
+
+	int pageNo = 0;
+
+	if (ViewBag.Pager != null)
+	{
+		pager = ViewBag.Pager;
+		pageNo = pager.CurrentPage;
+	}
+
+}
+
+
+
+<p>
+	<a asp-action="Create" class="btn btn-sm btn-success ml-1">Adaugare</a>
+</p>
+
+<partial name="_pager" model="@pager" />
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ProdId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProdName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Price)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Color)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.BrandId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CatId)
+			</th>
+
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProdId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProdName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Price)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Color)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.BrandId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CatId)
+				</td>
+
+				<td>
+					<div class="btn-group">
+						<a asp-action="Edit" asp-route-id="@item.ProdId" class="btn btn-sm btn-info">Editare</a>
+						<a asp-action="Details" asp-route-id="@item.ProdId" class="btn btn-sm btn-primary ml-1">Detalii</a>
+						<a asp-action="Delete" asp-route-id="@item.ProdId" class="btn btn-sm btn-danger ml-1">Stergere</a>
+					</div>
+
+					@*@Html.ActionLink("Edit", "Edit", new {  /* id=item.PrimaryKey */ }) |
+						@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+						@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<partial name="_pager" model="@pager" />
+
+

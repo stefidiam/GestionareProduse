@@ -1,0 +1,33 @@
+﻿@model GestionareProduse.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Stergere</h1>
+
+<h3>Esti sigur ca vrei sa stergi elementul?</h3>
+<div>
+    <h4>Categorie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CatName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CatName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CatStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CatStatus)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CatId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Inapoi la lista</a>
+    </form>
+</div>
